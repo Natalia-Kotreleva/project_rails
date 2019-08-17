@@ -21,4 +21,5 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* Пользователи, проходящие тесты
+* Администраторы сайта, поддерживающие работу сайта
