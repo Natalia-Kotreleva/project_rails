@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2019_08_25_162741) do
     t.string "title", null: false
     t.integer "level", default: 0
     t.integer "user_id"
-    t.string "category_title"  
+    t.string "category_id"  
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
