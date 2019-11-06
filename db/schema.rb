@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_09_05_165611) do
     t.integer "user_id"
     t.belongs_to :user
     t.belongs_to :test
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

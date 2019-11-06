@@ -6,6 +6,7 @@ class CreateTests < ActiveRecord::Migration[5.2]
       t.integer :author_id
       t.integer :category_id
 
+
       t.timestamps
     end
   end
