@@ -8,8 +8,7 @@ class User < ApplicationRecord
   validates :email, presence: true
 
   def tests_passed(level)
-    Test.joins('JOIN test_passages ON tests.id = test_passages.test_id').where(test_passages: {user_id: id}, level: level)
+    tests.where(level: level)
   end
 
-  scope :tests_passed, -> { Test.joins('JOIN test_passages ON tests.id = test_passages.test_id').where(test_passages: {user_id: id}, level: level) }
 end
