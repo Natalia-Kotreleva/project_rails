@@ -8,7 +8,6 @@ class Test < ApplicationRecord
   has_many :users, through: test_passages
 
   validates :title, presence: true
-  add_index :tests, ["title", "level"], :unique => true
   validates_numericality_of :level, :greater_than => 0,
                                      only_integer: true
 
@@ -19,5 +18,5 @@ class Test < ApplicationRecord
   scope :easy, -> { where("level < 2") }
   scope :middle, -> { where("level > 1 AND level < 5") }
   scope :hard, -> { where("level > 4") }
-  scope :sort_by_category, -> (category) { where("category = ?", category) }
+  scope :sort_by_category, -> (category) { joins(:category).where("category = ?", category) }
 end
