@@ -7,7 +7,16 @@ class Test < ApplicationRecord
   has_many :test_passages
   has_many :users, through: test_passages
 
-  def Test.sort_by_category(category)
-    Test.joins(:category).where(categories: {title: category}).order('title DESC')
+  validates :title, presence: true
+  validates_numericality_of :level, :greater_than => 0,
+                                     only_integer: true
+
+  def sort_by_category(category)
+    sort_by_category(category).order('title DESC')
   end
+
+  scope :easy, -> { where("level < 2") }
+  scope :middle, -> { where("level > 1 AND level < 5") }
+  scope :hard, -> { where("level > 4") }
+  scope :sort_by_category, -> (category) { joins(:category).where("category = ?", category) }
 end
