@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(version: 2019_11_10_202829) do
   create_table "test_passages", force: :cascade do |t|
     t.integer "test_id"
     t.integer "user_id"
+    t.belongs_to :user
+    t.belongs_to :test
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
