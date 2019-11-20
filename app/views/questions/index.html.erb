@@ -1,3 +1,7 @@
 <h1>Questions#index</h1>
-<p>Find me in app/views/questions/index.html.erb</p>
-<%=@question.test_id%>
+<p><%= @test.title %></p>
+<ul><% @questions.each do |question| %>
+    <li><a href="questions/<%=question.id%>"><%= question.body %></a></li>
+    <% end %>
+</ul>
+<p><%= link_to "New question", controller: "questions", action: "new" %></p>
