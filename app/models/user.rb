@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :test_passages
   has_many :tests, through: :test_passages
 
+
   validates :email, presence: true
 
   def tests_passed(level)
