@@ -1,7 +1,8 @@
-<h1>Questions#index</h1>
+<h1>Questions</h1>
 <p><%= @test.title %></p>
 <ul><% @questions.each do |question| %>
-    <li><a href="questions/<%=question.id%>"><%= question.body %></a></li>
+    <li><a href="/questions/<%=question.id%>"><%= question.body %></a></li>
     <% end %>
 </ul>
-<p><%= link_to "New question", controller: "questions", action: "new" %></p>
+<p><%= link_to "New question", controller: "questions", action: "new" %> |
+<%= link_to "Test", @test %></p>

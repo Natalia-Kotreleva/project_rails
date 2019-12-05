@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :find_test
+  before_action :find_test, only: [:index, :create]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = @test.questions.find(params[:id])
+    @question = Question.find(params[:id])
   end
 
   def create
@@ -34,6 +34,17 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    @question = Question.find(params[:id])
+  end
+
+  def update
+    @question = Question.find(params[:id])
+
+    if @question.update_attribute(:body, question_params[:body])
+      redirect_to @question
+    else
+      render plain: 'Error update'
+    end
   end
 
   private
@@ -49,4 +60,5 @@ class QuestionsController < ApplicationController
   def question_params
     params.require(:question).permit(:body,:test_id)
   end
+
 end
