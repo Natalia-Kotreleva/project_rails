@@ -1,5 +1,9 @@
 module QuestionsHelper
-  def question_header(action, test)
-    "#{action} #{test} Question" 
+  def question_header(test)
+    if test.persisted?
+      "Edit #{test.title} question"
+    else
+      "Create #{test.title} question"
+    end
   end
 end

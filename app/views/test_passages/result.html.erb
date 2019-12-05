@@ -1,9 +1,6 @@
 <h1><%= @test_passage.test.title %> completed!</h1>
-<% if procent(@test_passage) > 85%>
-  <p style="color:Green">Result: <%= procent(@test_passage) %> %. Good! </p>
-<% else %>
-  <p style="color:Red">Result: <%= procent(@test_passage) %> %. Bad. </p>
-<% end %>
+
+<p style="<%=@test_passage.passed_test%>">Result: <%= @test_passage.procent %> %.</p>
 
 <%= link_to 'Test', test_path(@test_passage.test) %> |
 <%= link_to 'Tests', tests_path(@test_passage.test) %>

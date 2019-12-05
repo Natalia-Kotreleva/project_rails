@@ -3,6 +3,8 @@ class TestPassage < ApplicationRecord
   belongs_to :test
   belongs_to :question
 
+  CONST_RESULT = 85
+
   def accept!(answer_ids)
     if correct_answer?(answer_ids)
       self.correct_question += 1
@@ -14,6 +16,20 @@ class TestPassage < ApplicationRecord
 
   def completed?
     question.nil?
+  end
+
+  def procent
+    a = self.correct_question
+    b = self.test.questions.size
+    procent_result = a*100/b
+  end
+
+  def passed_test
+    if self.procent > CONST_RESULT
+      "color:Green"
+    else
+      "color:Red"
+    end
   end
 
   private

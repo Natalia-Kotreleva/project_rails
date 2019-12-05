@@ -1,4 +1,4 @@
-<h1><%= question_header("Edit", @question.test) %></h1>
+<h1><%= question_header(@question.test) %></h1>
 <br>
 <%=@question.inspect%><br>
 <%= form_with(model: @question, url: question_path, method: "put", local: true) do |f| %>
