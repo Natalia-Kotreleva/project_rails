@@ -1,2 +1,6 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+<h1>Question <%=@question.id %></h1>
+<p><%= @question.body %></p>
+
+<p><%= link_to "New question", controller: "questions", action: "new" %></p>
+<p><%= link_to "All questions", controller: "questions", action: "index" %></p>
+<p><%= link_to "Edit question", controller: "questions", action: "edit" %></p>
