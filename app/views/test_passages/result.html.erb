@@ -1,0 +1,6 @@
+<h1><%= @test_passage.test.title %> completed!</h1>
+
+<p style="<%=@test_passage.passed_test%>">Result: <%= @test_passage.procent %> %.</p>
+
+<%= link_to 'Test', test_path(@test_passage.test) %> |
+<%= link_to 'Tests', tests_path(@test_passage.test) %>

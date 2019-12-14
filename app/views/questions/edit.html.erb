@@ -1,11 +1,7 @@
-<h1><%= question_header("Edit", @test) %></h1>
-
-<form action="/tests/<%=params[:test_id]%>/questions/<%=params[:id]%>" method="patch">
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-  <p>
-    <label for="question-body">Body:</label>
-    <input type="text" name="question[body]" test_id="<%=params[:test_id]%>" id="question-body"
-  </p><br>
-
-  <input type="submit" value="Update">
-</form>
+<h1><%= question_header(@question.test) %></h1>
+<br>
+<%=@question.inspect%><br>
+<%= form_with(model: @question, url: question_path, method: "put", local: true) do |f| %>
+  <%= f.text_field :body %>
+  <%= f.submit "Update" %>
+<% end %>

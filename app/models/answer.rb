@@ -7,6 +7,6 @@ class Answer < ApplicationRecord
   scope :correct, -> { where(correct: true) }
 
   def valid_answers
-    errors.add(:answers, "limit error") if question.answers.size > 3
+    #errors.add(:answers, "limit error") if question.answers.size > 3
   end
 end
