@@ -2,11 +2,11 @@ class TestsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_test, only: [:show, :edit, :update, :destroy, :start]
-  before_action :set_user#, only: [:start,]
+  before_action :current_user
 
   # GET /tests
   def index
-    @tests = @user.tests
+    @tests = @current_user.tests
   end
 
   # GET /tests/1
@@ -25,7 +25,7 @@ class TestsController < ApplicationController
   # POST /tests
   def create
   #  @category = Category.find(1)@
-    @test = @user.tests.new(test_params)#(title: params[:title1], level: params[:level], category_id: 1, author_id: 2)
+    @test = @current_user.tests.new(test_params)#(title: params[:title1], level: params[:level], category_id: 1, author_id: 2)
 
     if @test.save
       redirect_to @test
@@ -57,18 +57,14 @@ class TestsController < ApplicationController
   end
 
   def start
-    @user.tests.push(@test)
-    redirect_to @user.test_passage(@test)
+    @current_user.tests.push(@test)
+    redirect_to @current_user.test_passage(@test)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_test
       @test = Test.find(params[:id])
-    end
-
-    def set_user
-      @user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

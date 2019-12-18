@@ -4,14 +4,20 @@ class ApplicationController < ActionController::Base
   helper_method :current_user,
                 :logged_in?
 
+
+  before_action :set_page, only: :authenticate_user!
+
   private
+
+  def set_page
+    cookies[:page] = request.url
+  end
 
   def authenticate_user!
     unless current_user
+      set_page
       redirect_to login_path, alert: 'Wrong'
     end
-
-    cookies[:email] = current_user&.email
   end
 
   def current_user
@@ -21,5 +27,7 @@ class ApplicationController < ActionController::Base
   def logged_in?
     current_user.present?
   end
+
+
 
 end
