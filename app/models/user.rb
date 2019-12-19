@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   include Auth
 
-  has_many :created_test, class_name: 'Test',foreign_key: 'test_id'
+  has_many :created_test, class_name: 'Test',foreign_key: 'author_id'
   has_many :test_passages
   has_many :tests, through: :test_passages
 

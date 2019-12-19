@@ -2,11 +2,10 @@ class TestsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_test, only: [:show, :edit, :update, :destroy, :start]
-  before_action :current_user
 
   # GET /tests
   def index
-    @tests = @current_user.tests
+    @tests = current_user.tests
   end
 
   # GET /tests/1
@@ -21,16 +20,15 @@ class TestsController < ApplicationController
   # GET /tests/1/edit
   def edit
   end
-
+#
   # POST /tests
   def create
-  #  @category = Category.find(1)@
-    @test = @current_user.tests.new(test_params)#(title: params[:title1], level: params[:level], category_id: 1, author_id: 2)
+    @test = current_user.created_test.new(test_params)
 
     if @test.save
       redirect_to @test
     else
-      render plain: @test.inspect #render plain: 'Error create'
+      render plain:  @test.inspect
     end
   end
 
@@ -57,8 +55,8 @@ class TestsController < ApplicationController
   end
 
   def start
-    @current_user.tests.push(@test)
-    redirect_to @current_user.test_passage(@test)
+    current_user.tests.push(@test)
+    redirect_to current_user.test_passage(@test)
   end
 
   private
@@ -69,6 +67,6 @@ class TestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_params
-      params.require(:test).permit(:title, :level, :category_id, :author_id)
+      params.require(:test).permit(:title, :level, :category_id)
     end
 end

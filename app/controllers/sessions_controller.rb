@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to cookies[:page]
+      redirect_to cookies[:original_page] || root_path
     else
       flash.now[:alert] = 'Email/password wrong'
       render :new

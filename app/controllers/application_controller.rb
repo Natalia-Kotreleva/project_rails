@@ -9,13 +9,9 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def set_page
-    cookies[:page] = request.url
-  end
-
   def authenticate_user!
     unless current_user
-      set_page
+      cookies[:original_page] = request.url
       redirect_to login_path, alert: 'Wrong'
     end
   end
