@@ -1,12 +1,12 @@
+require 'digest/sha1'
+
 class User < ApplicationRecord
 
-  #has_and_belongs_to_many :tests
-  has_many :created_test, class_name: 'Test',foreign_key: 'test_id'
+  include Auth
+
+  has_many :created_test, class_name: 'Test',foreign_key: 'author_id'
   has_many :test_passages
   has_many :tests, through: :test_passages
-
-
-  validates :email, presence: true
 
   def tests_passed(level)
     tests.where(level: level)

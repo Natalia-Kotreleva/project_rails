@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= render 'shared/navigation' %>
+
     <title>Project1</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,6 +12,10 @@
   </head>
 
   <body>
+    <% if logged_in? %>
+      <p class="nav user">Welcome, <b><%= current_user.name %></b> Guru</p>
+    <% end %>
+
     <%= yield %>
 
     <%= render 'shared/footer' %>
