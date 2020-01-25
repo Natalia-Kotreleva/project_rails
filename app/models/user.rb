@@ -1,8 +1,14 @@
-require 'digest/sha1'
-
 class User < ApplicationRecord
 
-  include Auth
+  devise :database_authenticatable,
+        :registerable,
+        :recoverable,
+        :rememberable,
+        :trackable,
+        :validatable,
+        :confirmable
+
+  #include Auth
 
   has_many :created_test, class_name: 'Test',foreign_key: 'author_id'
   has_many :test_passages
