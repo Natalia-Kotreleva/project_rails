@@ -28,6 +28,6 @@ module User::Auth
   private
 
   def digest(string)
-    Digest::SHA1.hexdigest(string)
+   Digest::SHA1.hexdigest(string)
   end
 end
