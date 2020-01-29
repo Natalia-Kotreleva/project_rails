@@ -25,7 +25,7 @@ class Admin::TestsController < Admin::BaseController
     @test = current_user.created_test.new(test_params)
 
     if @test.save
-      redirect_to admin_tests_path
+      redirect_to admin_tests_path, notice: t('.success')
     else
       render plain:  @test.inspect
     end
@@ -35,7 +35,7 @@ class Admin::TestsController < Admin::BaseController
   def update
     respond_to do |format|
       if @test.update(test_params)
-        format.html { redirect_to @test, notice: 'Test was successfully updated.' }
+        format.html { redirect_to admin_tests_url, notice: 'Test was successfully updated.' }
         format.json { render :show, status: :ok, location: @test }
       else
         format.html { render :edit }
