@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= render 'shared/navigation' %>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=devise-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Project1</title>
     <%= csrf_meta_tags %>
@@ -12,17 +14,15 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <p class="nav user">
-        Welcome, <b><%= current_user.email %></b> Guru |
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-        </p>
-    <% end %>
 
-    <%= render 'shared/flash' %>
+    <%= render 'shared/nav' %>
 
-    <%= yield %>
+    <div class="container">
+      <%= render 'shared/flash' %>
+      <%= yield %>
+    </div>
 
     <%= render 'shared/footer' %>
+
   </body>
 </html>

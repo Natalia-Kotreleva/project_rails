@@ -1,14 +1,18 @@
-<h1><%= I18n.t('tests.index.header')%></h1>
+<div class="row justify-content-left mt-3">
+  <div class="col col-md-4">
+    <h1><%= I18n.t('tests.index.header')%></h1>
 
-<p id="notice"><%= notice %></p>
-<p><%= @user.inspect %></p>
+    <div class="alert alert-success">
+      <%= t('devise.sessions.signed_in') %>
+    </div>
 
-<p><%= User.all.inspect %></p>
+    <table>
+      <tr><% Test.all.each do |test| %>
+        <th><a href="tests/<%=test.id%>/questions"><%= test.title %></a></th>
+        <th><%= button_to "Start", start_test_path(test) %></th>
+      </tr>
+      <% end %>
+    </table>
 
-<p><%= session[:user_id] %></p>
-
-<ul><% Test.all.each do |test| %>
-    <li><a href="tests/<%=test.id%>/questions"><%= test.title %></a> <%= button_to "Start", start_test_path(test) %></li>
-
-    <% end %>
-</ul>
+  </div>
+</div>
