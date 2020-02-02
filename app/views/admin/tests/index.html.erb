@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
-<p><%= @user.inspect %></p>
 
-<p><%= User.all.inspect %></p>
+<h1><%= I18n.t('tests.index.header') %></h1>
 
-<p><%= session[:user_id] %></p>
-
-<h1>Tests</h1>
+<%= @tests %>
+<%= @tests.inspect %>
 
 <ul><% @tests.each do |test| %>
-    <li><a href="tests/<%=test.id%>"><%= test.title %></a></li>
+    <li><%= test.title %></li>
     <% end %>
 </ul>
 
@@ -22,9 +20,10 @@
   <tbody>
     <% @tests.each do |test| %>
       <tr>
-        <td><%= link_to 'Show', admin_test_path(test) %></td>
-        <td><%= link_to 'Edit', edit_admin_test_path(test) %></td>
-        <td><%= link_to 'Destroy', admin_test_path(test), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= test.title %></td>
+        <td><%= link_to t('show'), admin_test_path(test) %></td>
+        <td><%= link_to t('edit'), edit_admin_test_path(test) %></td>
+        <td><%= link_to t('destroy'), admin_test_path(test), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Test', new_admin_test_path(@test) %>
+<p><%= link_to t('new'), new_admin_test_path(@test) %></p>

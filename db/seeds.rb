@@ -10,4 +10,4 @@
 #question = Question.create([body: 'How?', test_id: test.id])
 #test = Test.create([title: 'Test'])
 #user = User.create([name: 'Tom'])
-User.last.update(type: 'Admin')
+User.find(5).update(type: 'Admin')

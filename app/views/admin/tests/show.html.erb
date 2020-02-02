@@ -2,9 +2,8 @@
 
 <h2><%= @test.title %></h2>
 
-<p><%= link_to "Questions", controller: "questions", action: "index", test_id: @test.id %></p>
-<p><%= button_to "Start", start_test_path(@test)  %></p>
-<%= TestPassage.all.inspect%>
 
-<%= link_to 'Edit', edit_test_path(@test) %> |
+<p><%= button_to "Start", start_test_path(@test)  %></p>
+
+<%= link_to 'Edit', edit_admin_test_path(@test) %> |
 <%= link_to 'Back', admin_tests_path %>
