@@ -39,10 +39,16 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise', '~> 4.0'
 
+gem 'faraday'
+
 gem 'rails-i18n', '~> 5.0'
 
 gem 'jquery-rails'
 gem 'bootstrap', '~>4.1.3'
+
+gem 'octokit', '~> 4.0'
+
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

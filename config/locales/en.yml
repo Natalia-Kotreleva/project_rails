@@ -24,6 +24,9 @@ en:
   test_passage:
     result:
       header: "Test %{title} was successfully completed"
+    gist:
+      success: "Gist was successfully created"
+      failure: "An error occurred while saving Gist"
 
   admin:
     tests:
@@ -31,3 +34,7 @@ en:
         success: "Test was successfully created."
       index:
         header: "Tests"
+
+  services:
+    github:
+      description: "A question about %{title} from TestGuru"

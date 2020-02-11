@@ -3,7 +3,8 @@
     <span class="navbar-text">
         Welcome, <b><%= current_user.email %></b> Admin Guru |
         <%= link_to 'Logout', destroy_user_session_path, method: 'delete' %> |
-        <%= link_to 'Edit tests', admin_tests_path %>
+        <%= link_to 'Edit tests', admin_tests_path %> |
+        <%= link_to 'Gists', admin_gists_path %>
     </span>
   </nav>
 </div>

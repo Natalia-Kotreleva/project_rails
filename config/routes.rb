@@ -21,11 +21,12 @@ root to: 'tests#index'
   resources :test_passages, only: [:show, :update] do
     member do
       get :result
+      post :gist
     end
   end
 
   namespace :admin do
-    resources :tests
+    resources :tests, :gists
   end
 
   #delete :destroy, to: 'sessions#destroy'
