@@ -4,7 +4,7 @@ ru:
   show: "Показать"
   edit: "Редактировать"
   destroy: "Удалить"
-  new: "Новый" 
+  new: "Новый"
 
   helpers:
     submit:
@@ -24,6 +24,9 @@ ru:
   test_passage:
     result:
       header: "Тест %{title} успешно завершен"
+    gist:
+      success: "Gist успешно сохранен"
+      failure: "Во время сохранения Gist произошла ошибка"
 
   admin:
     tests:
@@ -31,3 +34,7 @@ ru:
         success: "Тест успешно создан."
       index:
         header: "Тесты"
+
+  services:
+    github:
+      description: "Вопрос по %{title} из TestGuru"
